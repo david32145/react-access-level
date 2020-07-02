@@ -9,10 +9,7 @@
    "strict": true,
    "baseUrl": "./",
    "paths": {
-      "@config/*": ["./src/config/*"],
-      "@controllers/*": ["./src/controllers/*"],
-      "@models/*": ["./src/models/*"],
-      "@services/*": ["./src/services/*"]
+      "@lib/*": ["./lib/*"]
     }, 
     "esModuleInterop": true,
     "experimentalDecorators": true,
