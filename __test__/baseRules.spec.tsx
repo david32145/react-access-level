@@ -7,7 +7,7 @@ import { ReactACLProvider, Can } from '@lib/index.ts'
 afterEach(cleanup)
 
 const UserList = () => (
-  <ul className="user-list">
+  <ul data-component="userlist">
     <li>User 1</li>
     <li>User 2</li>
     <li>User 3</li>
@@ -17,7 +17,7 @@ const UserList = () => (
 const WithRoles: React.FC = () => {
   return (
     <ReactACLProvider
-      extractInitialRole={() => [{ resource: 'user', authority: 'read' }]}
+      extractInitialRole={() => ['user:read']}
     >
       <h1>Read an users</h1>
       <Can resource="user" authority="read">
@@ -41,15 +41,15 @@ const WithoutRoles: React.FC = () => {
 }
 
 describe('Main test', () => {
-  it('it should not render <UserList />', () => {
+  test('it should not render <UserList />', () => {
     const { container } = render(<WithoutRoles />)
-    const userList = container.querySelector('.user-list')
+    const userList = container.querySelector('[data-component="userlist"]')
     expect(userList).toBeNull()
   })
 
-  it('it should render <UserList />', () => {
+  test('it should render <UserList />', () => {
     const { container } = render(<WithRoles />)
-    const userList = container.querySelector('.user-list')
+    const userList = container.querySelector('[data-component="userlist"]')
     expect(userList).not.toBeNull()
     expect(userList?.querySelectorAll('li').length).toBe(3)
   })

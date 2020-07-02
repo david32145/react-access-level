@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
-import Context, { Rule } from './context'
+import Context from './context'
 
 export interface ReactACLProps {
-  extractInitialRole: () => Rule[]
+  extractInitialRole: () => string[]
 }
 
 const ReactACLProvider: React.FC<ReactACLProps> = ({ children, extractInitialRole }) => {
-  const [rules] = useState<Rule[]>(extractInitialRole())
+  const [rules] = useState<string[]>(extractInitialRole())
   return (
     <Context.Provider value={{ rules }}>
       {children}

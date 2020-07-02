@@ -6,7 +6,7 @@ export interface Rule {
 }
 
 interface ReactACLStore {
-  rules: Rule[]
+  rules: string[]
 }
 
 const INITIAL_STATE: ReactACLStore = {
