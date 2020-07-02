@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+   "target": "ES2017", 
+   "module": "commonjs",
+   "allowJs": true,
+   "jsx": "preserve",
+   "outDir": "./dist",
+   "resolveJsonModule": true,
+   "strict": true,
+   "baseUrl": "./",
+   "paths": {
+      "@config/*": ["./src/config/*"],
+      "@controllers/*": ["./src/controllers/*"],
+      "@models/*": ["./src/models/*"],
+      "@services/*": ["./src/services/*"]
+    }, 
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src", "__test__"]
+}
