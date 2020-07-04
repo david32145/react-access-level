@@ -2,7 +2,7 @@ import React from 'react'
 import { cleanup, render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
-import { ReactACLProvider, Can } from '@lib/index.ts'
+import { ReactACLProvider, Can, or } from '@lib/index.ts'
 
 afterEach(cleanup)
 
@@ -66,6 +66,32 @@ const WithRoleRenderProps: React.FC = () => {
   )
 }
 
+const WithMatchRoles: React.FC = () => {
+  return (
+    <ReactACLProvider
+      extractInitialRole={() => ['user:read', 'user:create']}
+    >
+      <h1>Read an users</h1>
+      <Can match={or('user:read', 'user:show')}>
+        {accept => accept ? <p>true</p> : <p>false</p>}
+      </Can>
+    </ReactACLProvider>
+  )
+}
+
+const NoRolesApplied: React.FC = () => {
+  return (
+    <ReactACLProvider
+      extractInitialRole={() => ['user:read', 'user:create']}
+    >
+      <h1>Read an users</h1>
+      <Can>
+        {accept => accept ? <p>true</p> : <p>false</p>}
+      </Can>
+    </ReactACLProvider>
+  )
+}
+
 describe('Main test', () => {
   test('it should not render <UserList />', () => {
     const { container } = render(<WithoutRoles />)
@@ -90,6 +116,22 @@ describe('Main test', () => {
 
   test('it should render <p>true</p> with render props', () => {
     const { container } = render(<WithRoleRenderProps />)
+    const paragraphs = container.querySelectorAll('p')
+    expect(paragraphs.length).toBe(1)
+    expect(paragraphs[0]).not.toBeNull()
+    expect(paragraphs[0]).toHaveTextContent('true')
+  })
+
+  test('it should render <p>true</p> with render props and custom match rules', () => {
+    const { container } = render(<WithMatchRoles />)
+    const paragraphs = container.querySelectorAll('p')
+    expect(paragraphs.length).toBe(1)
+    expect(paragraphs[0]).not.toBeNull()
+    expect(paragraphs[0]).toHaveTextContent('true')
+  })
+
+  test('it should render <p>true</p> when no rules have been applied', () => {
+    const { container } = render(<NoRolesApplied />)
     const paragraphs = container.querySelectorAll('p')
     expect(paragraphs.length).toBe(1)
     expect(paragraphs[0]).not.toBeNull()
