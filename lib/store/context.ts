@@ -1,4 +1,5 @@
 import { createContext } from 'react'
+import { QueryRule } from '@lib/utils/includesRules'
 
 export interface Rule {
   resource: string
@@ -6,11 +7,13 @@ export interface Rule {
 }
 
 interface ReactACLStore {
-  rules: string[]
+  rules: string[],
+  matchRule: (query: QueryRule) => boolean
 }
 
 const INITIAL_STATE: ReactACLStore = {
-  rules: []
+  rules: [],
+  matchRule: () => false
 }
 
 const context = createContext<ReactACLStore>(INITIAL_STATE)

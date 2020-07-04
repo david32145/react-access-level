@@ -1,6 +1,7 @@
 export {
   default as ReactACLProvider,
   ReactACLProps,
-  useRules
+  useRules,
+  useMatch
 } from './provider'
 export { Rule } from './context'
