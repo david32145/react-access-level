@@ -1,0 +1,11 @@
+__test__
+coverage
+lib
+node_modules
+.eslingignore
+.eslintrc.json
+.gitignore
+babel.config.json
+jest.config.js
+tsconfig*
+yarn.lock
