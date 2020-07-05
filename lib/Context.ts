@@ -1,7 +1,7 @@
 import { createContext } from 'react'
-import { QueryRule, User } from '@lib/models'
+import { QueryRule, User } from './typings'
 
-interface ReactACLStore {
+export interface ReactACLStore {
   rules: string[],
   matchRule: (query: QueryRule) => boolean
   logged: User

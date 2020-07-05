@@ -1,8 +1,7 @@
 import React from 'react'
 import { cleanup, render } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
 
-import { ReactACLProvider, Logged, NotLogged } from '@lib/index.ts'
+import { ReactACLProvider, Logged, NotLogged } from '../lib'
 
 afterEach(cleanup)
 

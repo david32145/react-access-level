@@ -1,4 +1,4 @@
-import { QueryArray, QueryRule } from '@lib/models'
+import { QueryArray, QueryRule } from './typings'
 export function includesRules (rule: string, rules: string[]) {
   return rules.includes(rule)
 }

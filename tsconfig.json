@@ -4,13 +4,10 @@
    "module": "commonjs",
    "allowJs": true,
    "jsx": "preserve",
+   "rootDir": "./lib",
    "outDir": "./dist",
    "resolveJsonModule": true,
    "strict": true,
-   "baseUrl": "./",
-   "paths": {
-      "@lib/*": ["./lib/*"]
-    }, 
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,

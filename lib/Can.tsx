@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
-import { useRules, useMatch } from './store'
-import { QueryRule } from '@lib/models'
-import { includesRules } from '@lib/utils/includesRules'
+import { useRules, useMatch } from './Provider'
+import { QueryRule } from './typings'
+import { includesRules } from './RulesUtil'
 
 function isCanRenderProps (children: CanChildren): children is CanRenderProps {
   if (children instanceof Function) {

@@ -1,4 +1,4 @@
-import ProcessRule, { and, or } from '@lib/utils/includesRules'
+import ProcessRule, { and, or } from '../lib/RulesUtil'
 
 describe('Includes rules', () => {
   test("It should be return true if has role 'user:list'", () => {

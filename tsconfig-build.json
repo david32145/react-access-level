@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+   "target": "ES2017", 
+   "module": "commonjs",
+   "allowJs": true,
+   "jsx": "preserve",
+   "rootDir": "./lib",
+   "outDir": "./dist",
+   "declaration": true,
+   "emitDeclarationOnly": true,
+   "esModuleInterop": true
+  },
+  "include": ["lib"]
+}

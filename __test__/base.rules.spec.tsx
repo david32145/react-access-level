@@ -2,7 +2,7 @@ import React from 'react'
 import { cleanup, render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
-import { ReactACLProvider, Can, or } from '@lib/index.ts'
+import { ReactACLProvider, Can, or } from '../lib'
 
 afterEach(cleanup)
 

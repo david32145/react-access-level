@@ -1,18 +1,20 @@
 {
-  "name": "nodejs-template",
+  "name": "react-access-level",
   "version": "1.0.0",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "scripts": {
     "lint": "eslint --ext=.ts,.js lib",
     "lint:fix": "eslint --ext=.ts,.js --fix lib",
     "test": "jest",
-    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored"
+    "build": "babel lib --extensions \".js,.ts,.tsx\" --out-dir dist --copy-files --no-copy-ignored"
   },
   "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.10.3",
-    "@babel/core": "^7.10.3",
+    "@babel/core": "^7.10.4",
+    "@babel/parser": "^7.10.4",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.1",

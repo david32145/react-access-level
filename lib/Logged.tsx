@@ -1,5 +1,5 @@
 import React from 'react'
-import { useLogged } from './store'
+import { useLogged } from './Provider'
 
 export interface LoggedProps {
   children: React.ReactElement

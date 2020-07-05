@@ -2,9 +2,9 @@ node_modules
 
 dist
 
-coverage/*
+mytest
 
-!coverage/.gitkeep
+coverage
 
 .env
 

@@ -10,12 +10,5 @@ module.exports = {
     ],
     '@babel/preset-typescript',
     '@babel/preset-react'
-  ],
-  plugins: [
-    ['module-resolver', {
-      alias: {
-        '@lib': './lib'
-      }
-    }]
   ]
 }

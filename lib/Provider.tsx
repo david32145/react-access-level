@@ -1,7 +1,7 @@
 import React, { useState, useContext, useCallback } from 'react'
-import Context from './context'
-import ProcessQuery from '@lib/utils/includesRules'
-import { QueryRule, User } from '@lib/models'
+import Context from './Context'
+import ProcessQuery from './RulesUtil'
+import { QueryRule, User } from './typings'
 
 export interface ReactACLProps {
   extractInitialRole?: () => string[]
