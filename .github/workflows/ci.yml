@@ -1,0 +1,32 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  ci:
+    name: CI/CD Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkuot on github repository
+        uses: actions/checkout@master
+      - name: Setup in NodeJS
+        uses: actions/setup-node@master
+        with: 
+          node-version: 12
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies
+        run: yarn install
+      - name: Build project with babel
+        run: yarn build
+      - name: Check lint
+        run: yarn lint
+      - name: Run test and collect coverage
+        run: yarn test --coverage
+      - name: Gerenerate declarations files
+        run: yarn tsc --build tsconfig-build.json
+      - name: Publish new version on npm js
+        run: npm publish
+        env: 
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
