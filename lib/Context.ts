@@ -5,12 +5,14 @@ export interface ReactACLStore {
   rules: string[],
   matchRule: (query: QueryRule) => boolean
   logged: User
+  unauthorizedComponent: React.ReactElement
 }
 
 const INITIAL_STATE: ReactACLStore = {
   rules: [],
   matchRule: () => true,
-  logged: null
+  logged: null,
+  unauthorizedComponent: null as unknown as React.ReactElement
 }
 
 const context = createContext<ReactACLStore>(INITIAL_STATE)

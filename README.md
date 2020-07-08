@@ -5,7 +5,7 @@
 </h3>
 
 <div align="center">
-  <a href="https://github.com/david32145/csv-node/action">
+  <a href="https://github.com/david32145/react-access-level/actions">
     <img src="https://github.com/david32145/react-access-level/workflows/ci/badge.svg" />
   </a>
   <a href="https://npm-stat.com/charts.html?package=react-access-level">

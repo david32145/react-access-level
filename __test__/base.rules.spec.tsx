@@ -2,7 +2,7 @@ import React from 'react'
 import { cleanup, render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
-import { ReactACLProvider, Can, or } from '../lib'
+import { ReactACLProvider, Can, or, Logged } from '../lib'
 
 afterEach(cleanup)
 
@@ -79,6 +79,86 @@ const WithMatchRoles: React.FC = () => {
   )
 }
 
+const WithUnauthorizedComponent: React.FC = () => {
+  return (
+    <ReactACLProvider
+      extractInitialUser={() => false}
+      defaultUnauthorizedComponent={ <div data-denied="denied">unauthorized</div>}
+    >
+      <h1>Read an users</h1>
+      <Can match={or('user:read', 'user:show')} showAnauthorizedComponent>
+        <p>content</p>
+      </Can>
+    </ReactACLProvider>
+  )
+}
+
+const WithDefaultUnauthorizedComponent: React.FC = () => {
+  return (
+    <ReactACLProvider
+      extractInitialUser={() => false}
+    >
+      <h1>Read an users</h1>
+      <Can match={or('user:read', 'user:show')} showAnauthorizedComponent>
+        <p>content</p>
+      </Can>
+    </ReactACLProvider>
+  )
+}
+
+const CustomUnauthorizedComponent: React.FC = () => {
+  return (
+    <ReactACLProvider
+      extractInitialUser={() => false}
+    >
+      <h1>Read an users</h1>
+      <Can match={or('user:read', 'user:show')} otherwiseComponent={<span>denied</span>}>
+        <p>content</p>
+      </Can>
+    </ReactACLProvider>
+  )
+}
+
+const WithUnauthorizedComponentLogged: React.FC = () => {
+  return (
+    <ReactACLProvider
+      extractInitialUser={() => false}
+      defaultUnauthorizedComponent={ <div data-denied="denied">unauthorized</div>}
+    >
+      <h1>Read an users</h1>
+      <Logged showAnauthorizedComponent>
+        <p>content</p>
+      </Logged>
+    </ReactACLProvider>
+  )
+}
+
+const WithDefaultUnauthorizedComponentLogged: React.FC = () => {
+  return (
+    <ReactACLProvider
+      extractInitialUser={() => false}
+    >
+      <h1>Read an users</h1>
+      <Logged showAnauthorizedComponent>
+        <p>content</p>
+      </Logged>
+    </ReactACLProvider>
+  )
+}
+
+const CustomUnauthorizedComponentLogged: React.FC = () => {
+  return (
+    <ReactACLProvider
+      extractInitialUser={() => false}
+    >
+      <h1>Read an users</h1>
+      <Logged otherwiseComponent={<span>denied</span>}>
+        <p>content</p>
+      </Logged>
+    </ReactACLProvider>
+  )
+}
+
 const NoRolesApplied: React.FC = () => {
   return (
     <ReactACLProvider
@@ -136,5 +216,47 @@ describe('Main test', () => {
     expect(paragraphs.length).toBe(1)
     expect(paragraphs[0]).not.toBeNull()
     expect(paragraphs[0]).toHaveTextContent('true')
+  })
+
+  test('It should render the unauthorized component', () => {
+    const { container } = render(<WithUnauthorizedComponent />)
+    const unauthorizedComponent = container.querySelector('[data-denied="denied"]')
+    expect(unauthorizedComponent).not.toBeNull()
+    expect(unauthorizedComponent).toHaveTextContent('unauthorized')
+  })
+
+  test('It should render the default unauthorized component', () => {
+    const { container } = render(<WithDefaultUnauthorizedComponent />)
+    const unauthorizedComponent = container.querySelector('p')
+    expect(unauthorizedComponent).not.toBeNull()
+    expect(unauthorizedComponent).toHaveTextContent('unauthorized')
+  })
+
+  test('It shoulbe render an custom unauthorized component', () => {
+    const { container } = render(<CustomUnauthorizedComponent />)
+    const unauthorizedComponent = container.querySelector('span')
+    expect(unauthorizedComponent).not.toBeNull()
+    expect(unauthorizedComponent).toHaveTextContent('denied')
+  })
+
+  test('It should render the unauthorized component', () => {
+    const { container } = render(<WithUnauthorizedComponentLogged />)
+    const unauthorizedComponent = container.querySelector('[data-denied="denied"]')
+    expect(unauthorizedComponent).not.toBeNull()
+    expect(unauthorizedComponent).toHaveTextContent('unauthorized')
+  })
+
+  test('It should render the default unauthorized component', () => {
+    const { container } = render(<WithDefaultUnauthorizedComponentLogged />)
+    const unauthorizedComponent = container.querySelector('p')
+    expect(unauthorizedComponent).not.toBeNull()
+    expect(unauthorizedComponent).toHaveTextContent('unauthorized')
+  })
+
+  test('It shoulbe render an custom unauthorized component', () => {
+    const { container } = render(<CustomUnauthorizedComponentLogged />)
+    const unauthorizedComponent = container.querySelector('span')
+    expect(unauthorizedComponent).not.toBeNull()
+    expect(unauthorizedComponent).toHaveTextContent('denied')
   })
 })

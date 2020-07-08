@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { useRules, useMatch } from './Provider'
+import { useRules, useMatch, useUnauthorizedComponent } from './Provider'
 import { QueryRule } from './typings'
 import { includesRules } from './RulesUtil'
 
@@ -18,12 +18,22 @@ export interface CanProps {
   resource?: string
   authority?: string
   match?: QueryRule
-  children: CanChildren
+  children: CanChildren,
+  otherwiseComponent?: React.ReactElement
+  showAnauthorizedComponent?: boolean
 }
 
-const Can: React.FC<CanProps> = ({ children, resource, authority, match }) => {
+const Can: React.FC<CanProps> = ({
+  children,
+  resource,
+  authority,
+  match,
+  otherwiseComponent: OtherwiseComponent,
+  showAnauthorizedComponent
+}) => {
   const rules = useRules()
   const matchRules = useMatch()
+  const UnauthorizedComponent = useUnauthorizedComponent()
 
   const accept = useMemo(() => {
     if (match) {
@@ -38,6 +48,14 @@ const Can: React.FC<CanProps> = ({ children, resource, authority, match }) => {
 
   if (isCanRenderProps(children)) {
     return children(accept)
+  }
+
+  if (OtherwiseComponent) {
+    return OtherwiseComponent
+  }
+
+  if (showAnauthorizedComponent) {
+    return UnauthorizedComponent
   }
 
   if (!accept) {

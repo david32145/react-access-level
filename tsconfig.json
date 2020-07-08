@@ -4,7 +4,7 @@
    "module": "commonjs",
    "allowJs": true,
    "jsx": "preserve",
-   "rootDir": "./lib",
+   "rootDirs": ["lib", "__test__"],
    "outDir": "./dist",
    "resolveJsonModule": true,
    "strict": true,
