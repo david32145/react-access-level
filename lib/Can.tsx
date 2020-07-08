@@ -50,15 +50,14 @@ const Can: React.FC<CanProps> = ({
     return children(accept)
   }
 
-  if (OtherwiseComponent) {
-    return OtherwiseComponent
-  }
-
-  if (showAnauthorizedComponent) {
-    return UnauthorizedComponent
-  }
-
   if (!accept) {
+    if (OtherwiseComponent) {
+      return OtherwiseComponent
+    }
+
+    if (showAnauthorizedComponent) {
+      return UnauthorizedComponent
+    }
     return null
   }
 

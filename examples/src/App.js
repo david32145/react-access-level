@@ -5,7 +5,7 @@ import Hook from './Hook';
 
 function App() {
   function getInitialUser() {
-    return false
+    return true
   }
 
   function getInitialRules() {

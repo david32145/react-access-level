@@ -15,15 +15,14 @@ const Logged: React.FC<LoggedProps> = ({
   const logged = useLogged()
   const UnauthorizedComponent = useUnauthorizedComponent()
 
-  if (OtherwiseComponent) {
-    return OtherwiseComponent
-  }
-
-  if (showAnauthorizedComponent) {
-    return UnauthorizedComponent
-  }
-
   if (!logged) {
+    if (OtherwiseComponent) {
+      return OtherwiseComponent
+    }
+
+    if (showAnauthorizedComponent) {
+      return UnauthorizedComponent
+    }
     return null
   }
 
