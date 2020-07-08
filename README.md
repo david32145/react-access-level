@@ -58,7 +58,13 @@ This function extract the initials roles of application, default is `[]`.
 
 - extractInitialUser: `() => object | boolean | string | null`.
 
-This function extract the initial user state, default is `false`.
+This function extract the initial user state, default is `true`.
+
+- defaultUnauthorizedComponent: `React.ReactElement`.
+
+This is the default component for show if user not have access.
+
+An user can have roles even not is logged.
 
 
 ```js
@@ -80,6 +86,18 @@ function App() {
     <ReactACLProvider
       extractInitialUser={getInitialUser}
       extractInitialRole={getInitialRules}
+      defaultUnauthorizedComponent={
+      <span 
+        style={{
+          background: 'red',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 400,
+          height: 200
+        }}>
+        DENIED ACCESS 
+      </span>}
     >
       <Home />
     </ReactACLProvider>
@@ -151,6 +169,33 @@ import { and, or } from "react-access-level"
 ```jsx
 <Can match={and("user:create", or("user:delete", "user:update"))}>
   <p>it's ok!!</p>
+</Can>
+```
+
+Custom unauthorized component
+
+```js
+<Logged showAnauthorizedComponent>
+  <p>user logged</p>
+</Logged>
+
+<Logged otherwiseComponent={<span>DENIED</span>}>
+  <p>user logged</p>
+</Logged>
+```
+
+```js
+
+<Can resource="user" authority="destroy" showAnauthorizedComponent>
+  <button>delete user</button>
+</Can>
+
+<Can 
+  resource="user"
+  authority="destroy"
+  otherwiseComponent={<b>CAN'T DELETE USER</b>}
+>
+  <button>delete user</button>
 </Can>
 ```
 

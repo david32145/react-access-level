@@ -5,7 +5,7 @@ import Hook from './Hook';
 
 function App() {
   function getInitialUser() {
-    return true
+    return false
   }
 
   function getInitialRules() {
@@ -17,6 +17,18 @@ function App() {
     <ReactACLProvider
       extractInitialUser={getInitialUser}
       extractInitialRole={getInitialRules}
+      defaultUnauthorizedComponent={
+      <span 
+        style={{
+          background: 'red',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 400,
+          height: 200
+        }}>
+        DENIED ACCESS 
+      </span>}
     >
       <Home />
       <Hook />
