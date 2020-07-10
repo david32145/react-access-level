@@ -28,6 +28,7 @@
 - Edit style of component if has or not an role;
 - Enable if else components for show or not components based in authorities;
 - Provide one way for set inital roles;
+- Edit roles in runtime.
 
 ### Usage
 
@@ -50,9 +51,9 @@ function App() {
 export default App;
 ```
 
-The component `ReactACLProvider` can receive two properties:
+The component `ReactACLProvider` can receive 3 properties:
 
-- extractInitialRole: `() => string[]`.
+- extractInitialRoles: `() => string[]`.
 
 This function extract the initials roles of application, default is `[]`.
 
@@ -77,7 +78,7 @@ function App() {
     return true
   }
 
-  function getInitialRules() {
+  function getInitialRoles() {
     console.log('here')
     return ["user:create", "user:read", "user:update"]
   }
@@ -85,7 +86,7 @@ function App() {
   return (
     <ReactACLProvider
       extractInitialUser={getInitialUser}
-      extractInitialRole={getInitialRules}
+      extractInitialRoles={getInitialRoles}
       defaultUnauthorizedComponent={
       <span 
         style={{
@@ -203,19 +204,62 @@ Use hooks.
 
 ```js
 import React from "react"
-import { useLogged, useRules } from "react-access-level"
+import { 
+  useLogged, 
+  useRules, 
+  useLogin, 
+  useLogout,
+  useManagerRoles
+} from "react-access-level"
 
 export default function Hook() {
   const logged = useLogged()
-  const rules = useRules()
+  const roles = useRoles()
+  const login = useLogin()
+  const logout = useLogout()
+
+  const { addRole, updateRole, deleteRole } = useManagerRoles()
 
   return (
-    <>
-      <h1>{logged ? "you are logged!!!" : "you are not logged!!!"}</h1>
-      <ul>
-        {rules.map(rule => <li key={rule}>{rule}</li>)}
+    <div id="app">
+      <h1>{logged ? 'logged' : 'not logged'}</h1>
+      <ul id="roles-list">
+        {roles.map(role => <li key={role}>{role}</li>)}
       </ul>
-    </>
+
+      <button
+        id="btn-login"
+        onClick={() => login(true)}
+      >
+        Login
+      </button>
+      <button
+        id="btn-logout"
+        onClick={() => logout()}
+      >
+        Logout
+      </button>
+
+      <button
+        id="btn-addrole"
+        onClick={() => addRole('user:read')}
+      >
+        Add role
+      </button>
+
+      <button
+        id="btn-updaterole"
+        onClick={() => updateRole('user:create', 'user:add')}
+      >
+        Update role
+      </button>
+      <button
+        id="btn-deleterole"
+        onClick={() => deleteRole('user:create')}
+      >
+        Update role
+      </button>
+    </div>
   )
 }
 ```

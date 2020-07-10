@@ -8548,10 +8548,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-access-level@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-access-level/-/react-access-level-1.0.1.tgz#95916a1ac70327197277a5d17853837598bba893"
-  integrity sha512-sKsgf20yqoNi3g0Zuoa0JCaFGzAgfPJ02ZAnq8KXqxBXBPWx8gjk0dKK2qdI3P8+/IqGnHgHn75qci31dgZs5g==
+react-access-level@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-access-level/-/react-access-level-1.0.2.tgz#7bece5cba9748923a37a63a0a175e1329db7434d"
+  integrity sha512-iZe+un3rDcnx3koMEVT6v5VeRsQVeff1CmQzsJfoaEZqAj8L/LIDjiXIdnldCjSpiD4VP2nwffbjS0g4nfT0vg==
 
 react-app-polyfill@^1.0.6:
   version "1.0.6"

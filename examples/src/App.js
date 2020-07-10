@@ -8,7 +8,7 @@ function App() {
     return true
   }
 
-  function getInitialRules() {
+  function getInitialRoles() {
     console.log('here')
     return ["user:create", "user:read", "user:update"]
   }
@@ -16,7 +16,7 @@ function App() {
   return (
     <ReactACLProvider
       extractInitialUser={getInitialUser}
-      extractInitialRole={getInitialRules}
+      extractInitialRoles={getInitialRoles}
       defaultUnauthorizedComponent={
       <span 
         style={{
