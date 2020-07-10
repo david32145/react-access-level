@@ -17,7 +17,7 @@ const UserList: React.FC = () => (
 const WithRoles: React.FC = () => {
   return (
     <ReactACLProvider
-      extractInitialRole={() => ['user:read']}
+      extractInitialRoles={() => ['user:read']}
     >
       <h1>Read an users</h1>
       <Can resource="user" authority="read">
@@ -30,7 +30,7 @@ const WithRoles: React.FC = () => {
 const WithoutRoles: React.FC = () => {
   return (
     <ReactACLProvider
-      extractInitialRole={() => []}
+      extractInitialRoles={() => []}
     >
       <h1>Read an users</h1>
       <Can resource="user" authority="read">
@@ -43,7 +43,7 @@ const WithoutRoles: React.FC = () => {
 const WithoutRoleRenderProps: React.FC = () => {
   return (
     <ReactACLProvider
-      extractInitialRole={() => []}
+      extractInitialRoles={() => []}
     >
       <h1>Read an users</h1>
       <Can resource="user" authority="read">
@@ -56,7 +56,7 @@ const WithoutRoleRenderProps: React.FC = () => {
 const WithRoleRenderProps: React.FC = () => {
   return (
     <ReactACLProvider
-      extractInitialRole={() => ['user:read']}
+      extractInitialRoles={() => ['user:read']}
     >
       <h1>Read an users</h1>
       <Can resource="user" authority="read">
@@ -69,7 +69,7 @@ const WithRoleRenderProps: React.FC = () => {
 const WithMatchRoles: React.FC = () => {
   return (
     <ReactACLProvider
-      extractInitialRole={() => ['user:read', 'user:create']}
+      extractInitialRoles={() => ['user:read', 'user:create']}
     >
       <h1>Read an users</h1>
       <Can match={or('user:read', 'user:show')}>
@@ -162,7 +162,7 @@ const CustomUnauthorizedComponentLogged: React.FC = () => {
 const NoRolesApplied: React.FC = () => {
   return (
     <ReactACLProvider
-      extractInitialRole={() => ['user:read', 'user:create']}
+      extractInitialRoles={() => ['user:read', 'user:create']}
     >
       <h1>Read an users</h1>
       <Can>

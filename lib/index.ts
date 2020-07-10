@@ -7,6 +7,9 @@ export {
   ReactACLProps,
   useLogged,
   useMatch,
-  useRules
+  useRoles,
+  useManagerRoles,
+  useLogin,
+  useLogout
 } from './Provider'
 export { and, or } from './RulesUtil'

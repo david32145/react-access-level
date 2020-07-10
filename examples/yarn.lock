@@ -8548,10 +8548,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-access-level@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-access-level/-/react-access-level-1.0.1.tgz#95916a1ac70327197277a5d17853837598bba893"
-  integrity sha512-sKsgf20yqoNi3g0Zuoa0JCaFGzAgfPJ02ZAnq8KXqxBXBPWx8gjk0dKK2qdI3P8+/IqGnHgHn75qci31dgZs5g==
+react-access-level@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-access-level/-/react-access-level-1.0.2.tgz#7bece5cba9748923a37a63a0a175e1329db7434d"
+  integrity sha512-iZe+un3rDcnx3koMEVT6v5VeRsQVeff1CmQzsJfoaEZqAj8L/LIDjiXIdnldCjSpiD4VP2nwffbjS0g4nfT0vg==
 
 react-app-polyfill@^1.0.6:
   version "1.0.6"
@@ -10520,9 +10520,9 @@ websocket-driver@>=0.5.1:
     websocket-extensions ">=0.1.1"
 
 websocket-extensions@>=0.1.1:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
-  integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
+  integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3, whatwg-encoding@^1.0.5:
   version "1.0.5"
